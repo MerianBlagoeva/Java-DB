@@ -32,10 +32,7 @@ VALUES (1, 'Kevin', 22, 1),
 	   (2, 'Bob', 15, 3),
 	   (3, 'Steward', null, 2);
 
-SELECT 
-    *
-FROM
-    minions;
+SELECT * FROM minions;
 
 -- 4
 TRUNCATE TABLE minions;
@@ -64,10 +61,7 @@ VALUES ('Pesho', 'm', '2023-05-20'),
 ('Gosho','m', '2006-05-20'),
 ('Asen', 'm', '2023-05-20');
 
-SELECT 
-    *
-FROM
-    people;
+SELECT *FROM people;
 
 -- 7
 CREATE TABLE users (
