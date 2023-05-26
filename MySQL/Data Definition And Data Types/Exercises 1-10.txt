@@ -1,0 +1,105 @@
+CREATE DATABASE minions;
+USE minions;
+
+-- 1
+CREATE TABLE minions (
+    `id` INT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(47),
+    `age` INT
+);
+
+CREATE TABLE towns (
+    town_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(47)
+);
+
+-- 2
+ALTER TABLE minions
+ADD COLUMN town_id INT;
+
+ALTER TABLE minions
+ADD CONSTRAINT fk_minions_towns FOREIGN KEY minions(town_id)
+REFERENCES towns(id);
+
+-- 3
+INSERT INTO `towns`(`id`, `name`)
+VALUES (1, 'Sofia'),
+       (2, 'Plovdiv'),
+       (3, 'Varna');
+       
+INSERT INTO `minions`(`id`, `name`, `age`, `town_id`)
+VALUES (1, 'Kevin', 22, 1),
+	   (2, 'Bob', 15, 3),
+	   (3, 'Steward', null, 2);
+
+SELECT 
+    *
+FROM
+    minions;
+
+-- 4
+TRUNCATE TABLE minions;
+
+-- 5
+DROP TABLE minions;
+DROP TABLE towns;
+
+-- 6
+CREATE TABLE people (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(200) NOT NULL,
+    picture BLOB,
+    height DOUBLE(10 , 2 ),
+    weight DOUBLE(10 , 2 ),
+    gender CHAR(1) NOT NULL,
+    birthdate DATE NOT NULL,
+    biography TEXT
+);
+
+INSERT INTO people (name, gender, birthdate)
+VALUES ('Pesho', 'm', '2023-05-20'),
+('Meri', 'f', '2001-05-20'),
+('Asen', 'm', '2004-05-20'),
+('Ivan', 'm', '1995-05-20'),
+('Gosho','m', '2006-05-20'),
+('Asen', 'm', '2023-05-20');
+
+SELECT 
+    *
+FROM
+    people;
+
+-- 7
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(30) NOT NULL,
+    password VARCHAR(26) NOT NULL,
+    profile_picture BLOB,
+    last_login_time TIMESTAMP,
+    is_deleted BOOLEAN
+);
+
+INSERT INTO users (username, password, last_login_time, is_deleted)
+VALUES ('user1', 'password1', CURRENT_TIMESTAMP, false),
+       ('user2', 'password2', '2023-05-19 10:30:00', false),
+       ('user3', 'password3', '2023-05-18 15:45:00', true),
+       ('user4', 'password4', NULL, false),
+       ('user5', 'password5', '2023-05-17 08:00:00', true);
+       
+-- 8
+ALTER TABLE users
+DROP PRIMARY KEY,
+ADD CONSTRAINT pk_users PRIMARY KEY users(id, username);
+
+-- 9
+ALTER TABLE users
+CHANGE COLUMN last_login_time
+last_login_time DATETIME DEFAULT NOW();
+
+-- 10
+ALTER TABLE users
+DROP PRIMARY KEY,
+ADD CONSTRAINT pk_users
+PRIMARY KEY users(id),
+CHANGE COLUMN username
+username VARCHAR(30) UNIQUE NOT NULL;
