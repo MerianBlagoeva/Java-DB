@@ -195,7 +195,7 @@ CREATE TABLE `cars` (
     `available` BOOL
 );
 
-  INSERT INTO `cars`
+INSERT INTO `cars`
 VALUES
   (1, 'ABC123', 'Toyota', 'Corolla', 2010, 1, 5, NULL, 'NEW', 1),
   (2, 'DEF456', 'Honda', 'Civic', 2010, 1, 5, NULL, 'NEW', 1),
@@ -209,7 +209,7 @@ CREATE TABLE `employees` (
     `notes` TEXT
 );
 
-  INSERT INTO `employees`
+INSERT INTO `employees`
 VALUES
   (1, 'John', 'Doe', 'Sales manager', 'SOME TEXT'),
   (2, 'Jane', 'Smith', 'Operator', 'SOME TEXT'),
@@ -349,7 +349,6 @@ SELECT `first_name`, `last_name`, `job_title`, `salary` FROM `employees`
 ORDER BY `salary` DESC;
 
 -- 17
-
 UPDATE `employees`
 SET `salary` = `salary` * 1.1;
 SELECT `salary` FROM `employees`;
