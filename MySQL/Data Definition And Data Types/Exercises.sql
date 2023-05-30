@@ -248,9 +248,6 @@ CREATE TABLE `rental_orders` (
     `tax_rate` FLOAT NOT NULL,
     `order_status` VARCHAR(50) NOT NULL,
     `notes` TEXT
--- 	 FOREIGN KEY (employee_id) REFERENCES employees (id),
---   FOREIGN KEY (customer_id)REFERENCES customers (id),
---   FOREIGN KEY (car_id) REFERENCES cars (id) ???????
 );
 
 INSERT INTO `rental_orders`
