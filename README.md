@@ -14,4 +14,3 @@ The courses cover the following topics:
 - **Subqueries and JOINs**
 - **Database Programmability and Transactions**
 - **Exercise: Functions and Procedures**
-- **Workshop: Algorithms Introduction**
