@@ -6,9 +6,8 @@ The courses cover the following topics:
  
  ## MySQL
 
-- [**Databases Introduction. Data Definition and Datatypes**]
+- **Databases Introduction. Data Definition and Datatypes**
 - **Basic CRUD**
-- **Multidimensional Arrays**
 - **Built-in Functions**
 - **Data Aggregation**
 - **Table Relations**
