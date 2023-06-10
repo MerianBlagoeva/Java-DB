@@ -109,19 +109,19 @@ WHERE id NOT IN ((SELECT student_id FROM students_courses))
 ORDER BY `password` DESC;
 
 #8
-SELECT COUNT(sc.student_id) AS students_count, 
+SELECT
+COUNT(s.id) AS students_count,
 u.`name` AS university_name
-FROM students_courses AS sc
-JOIN students AS s
+FROM universities AS u
+JOIN courses AS c
+ON u.id = c.university_id
+JOIN students_courses AS sc
+ON c.id = sc.course_id
+LEFT JOIN students AS s
 ON sc.student_id = s.id
-JOIN cities AS c
-ON s.city_id = c.id
-JOIN universities AS u
-ON c.id = u.city_id
 GROUP BY u.id
 HAVING students_count >= 8
 ORDER BY students_count DESC, university_name DESC;
-
 
 #9
 SELECT u.name, c.name, u.address,
@@ -181,18 +181,3 @@ END$$
 DELIMITER ;
 
 CALL udp_graduate_all_students_by_year(2017);
-
-#08
-SELECT
-COUNT(s.id) AS students_count,
-u.`name` AS university_name
-FROM universities AS u
-JOIN courses AS c
-ON u.id = c.university_id
-JOIN students_courses AS sc
-ON c.id = sc.course_id
-LEFT JOIN students AS s
-ON sc.student_id = s.id
-GROUP BY u.id
-HAVING students_count >= 8
-ORDER BY students_count DESC, university_name DESC;
