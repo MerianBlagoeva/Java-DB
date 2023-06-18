@@ -1,17 +1,17 @@
 package Exercises;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class AddMinion {
+public class _04_AddMinion {
     private static Connection connection;
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         connection = Utils.getConnection();
-
         Scanner sc = new Scanner(System.in);
 
         String[] minionInfo = sc.nextLine().split("\\s+");
@@ -65,7 +65,7 @@ public class AddMinion {
     }
 
     private static void addVillainIfItDoesntExist(String villainName) throws SQLException {
-        if (checkIfExists(villainName, "villains")) {
+        if (!checkIfExists(villainName, "villains")) {
             PreparedStatement addVillain = connection
                     .prepareStatement("INSERT INTO villains(name, evilness_factor) VALUES(?, ?)");
             addVillain.setString(1, villainName);
@@ -78,7 +78,7 @@ public class AddMinion {
     }
 
     private static void addTownIfItDoesntExist(String minionTown) throws SQLException {
-        if (checkIfExists(minionTown, "towns")) {
+        if (!checkIfExists(minionTown, "towns")) {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("INSERT INTO towns(name) VALUES(?);");
             preparedStatement.setString(1, minionTown);
@@ -89,8 +89,8 @@ public class AddMinion {
         }
     }
 
-    private static boolean checkIfExists(String columnName, String tableName) throws SQLException {
-        String query = String.format("SELECT DISTINCT COUNT(*) FROM %s WHERE name = ?", tableName);
+    private static boolean checkIfExists(String columnName, String tableName) throws SQLException { //Returns true if the entity exists, false if it doesn't
+        String query = String.format("SELECT COUNT(*) FROM %s WHERE name = ?", tableName);
 
         PreparedStatement preparedStatement = connection
                 .prepareStatement(query);
@@ -99,7 +99,7 @@ public class AddMinion {
         ResultSet resultSet = preparedStatement.executeQuery();
 
         if (resultSet.next()) {
-            return resultSet.getInt(1) == 0;
+            return resultSet.getInt(1) == 1;
         }
 
         return false;

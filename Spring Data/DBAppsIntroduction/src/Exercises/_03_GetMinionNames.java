@@ -10,17 +10,15 @@ import java.sql.SQLException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class GetMinionNames {
+public class _03_GetMinionNames {
     private static Connection connection;
+
     public static void main(String[] args) throws SQLException, IOException {
         connection = Utils.getConnection();
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Enter villain id: ");
         int villainId = Integer.parseInt(reader.readLine());
-
-//        String villainName = findVillainNameById(villainId);
 
         String villainName = findEntityNameById(villainId);
 
@@ -33,8 +31,8 @@ public class GetMinionNames {
         if (allMinionsByVillainId != null) {
             allMinionsByVillainId.forEach(System.out::println);
         }
-
     }
+
     private static String findEntityNameById(int entityId) throws SQLException {
         String query = String.format("SELECT name FROM %s WHERE id = ?", "villains");
         PreparedStatement preparedStatement = connection
@@ -49,7 +47,7 @@ public class GetMinionNames {
         return null;
     }
 
-    private static Set<String> getAllMinionsByVillainId(int villainId) throws SQLException, IOException {
+    private static Set<String> getAllMinionsByVillainId(int villainId) throws SQLException {
         Set<String> result = new LinkedHashSet<>();
         PreparedStatement preparedStatement = connection
                 .prepareStatement("""
@@ -61,12 +59,10 @@ public class GetMinionNames {
 
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        int counter = 1;
-
         if (resultSet.isBeforeFirst()) {
             while (resultSet.next()) {
                 result.add(String.format("%d. %s %d",
-                        counter++, resultSet.getString("name"),
+                        resultSet.getRow(), resultSet.getString("name"),
                         resultSet.getInt("age")));
             }
         } else {

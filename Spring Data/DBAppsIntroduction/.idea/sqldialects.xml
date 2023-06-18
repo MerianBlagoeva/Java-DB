@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/Exercises/AddMinion.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/Exercises/GetMinionNames.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/Exercises/GetVillainsNames.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/Exercises/Main.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_02_GetVillainsNames.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_03_GetMinionNames.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_04_AddMinion.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_05_ChangeTownNamesCasing.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_06_RemoveVillain.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_07_PrintAllMinionNames.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_08_IncreaseMinionsAge.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/Exercises/_09_IncreaseAgeStoredProcedure.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/../../../../minions_db.sql" dialect="MySQL" />
-  </component>
-  <component name="SqlResolveMappings">
-    <file url="file://$PROJECT_DIR$/src/Exercises/Main.java" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;c2821c32-df41-4ce2-b69b-76bce35caf98&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;schema&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@qname&quot;:&quot;minions_db&quot;      }     }    }   }  } }}" />
   </component>
 </project>
