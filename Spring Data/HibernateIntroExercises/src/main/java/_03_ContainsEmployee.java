@@ -1,9 +1,7 @@
-import entities.Employee;
-
 import javax.persistence.EntityManager;
 
-public class ContainsEmployee extends Engine {
-    public ContainsEmployee(EntityManager entityManager) {
+public class _03_ContainsEmployee extends Engine {
+    public _03_ContainsEmployee(EntityManager entityManager) {
         super(entityManager);
     }
 

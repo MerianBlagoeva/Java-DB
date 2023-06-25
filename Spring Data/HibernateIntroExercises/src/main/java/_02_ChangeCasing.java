@@ -1,8 +1,8 @@
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class ChangeCasing extends Engine {
-    public ChangeCasing(EntityManager entityManager) {
+public class _02_ChangeCasing extends Engine {
+    public _02_ChangeCasing(EntityManager entityManager) {
         super(entityManager);
     }
 
