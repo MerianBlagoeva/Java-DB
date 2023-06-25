@@ -22,7 +22,5 @@ public class _12_EmployeesMaximumSalaries extends Engine {
                     BigDecimal maxSalary = (BigDecimal) row[1];
                     System.out.println(departmentName + " " + maxSalary);
                 });
-
-
     }
 }

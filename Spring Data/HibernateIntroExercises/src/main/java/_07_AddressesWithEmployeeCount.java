@@ -1,8 +1,6 @@
 import entities.Address;
-import entities.Employee;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
 public class _07_AddressesWithEmployeeCount extends Engine {
     public _07_AddressesWithEmployeeCount(EntityManager entityManager) {

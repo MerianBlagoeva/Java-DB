@@ -2,7 +2,6 @@ import entities.Employee;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class _04_EmployeesWithSalaryOver50000 extends Engine {
     public _04_EmployeesWithSalaryOver50000(EntityManager entityManager) {
@@ -17,7 +16,5 @@ public class _04_EmployeesWithSalaryOver50000 extends Engine {
                 .getResultStream()
                 .map(Employee::getFirstName)
                 .forEach(System.out::println);
-
-
     }
 }
