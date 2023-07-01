@@ -1,4 +1,4 @@
-package com.example.springdataintro;
+package com.example.springdataintro.repositories;
 
 import com.example.springdataintro.entities.Student;
 import org.springframework.data.repository.CrudRepository;

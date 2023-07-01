@@ -1,8 +1,10 @@
 package com.example.springdataintro.services;
 
-import com.example.springdataintro.StudentRepository;
+import com.example.springdataintro.repositories.StudentRepository;
 import com.example.springdataintro.entities.Student;
+import org.springframework.stereotype.Service;
 
+@Service
 public class StudentServiceImpl implements StudentService {
     
     private StudentRepository studentRepository;
