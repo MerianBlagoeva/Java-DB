@@ -14,3 +14,21 @@
 - **Subqueries and JOINs**
 - **Database Programmability and Transactions**
 - **Exercise: Functions and Procedures**
+#
+![pngwing com (5) (1)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/3c030e6a-49ea-44da-966e-bada55f95c0b)![pngwing com (6)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/12c01d3f-5fed-4abb-b34d-e944dffba5a7)
+## Spring Data
+
+- **DB Apps Introduction**
+- **ORM Fundamentals**
+- **Workshop: Custom ORM**
+- **Introduction to Hibernate**
+- **Hibernate Code First**
+- **Spring Data Intro**
+- **Spring Data Advanced Querying**
+- **Spring Data Auto Mapping Objects**
+- **JSON Processing**
+- **XML Processing**
+- **Q&A**
+- **Workshop - MVC Project**
+
+
