@@ -2,6 +2,7 @@ package bg.softuni.springrepositories.services;
 
 import bg.softuni.springrepositories.entities.Shampoo;
 import bg.softuni.springrepositories.entities.Size;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 
 import java.math.BigDecimal;
@@ -22,4 +23,6 @@ public interface ShampooService {
     int findCheaperThanCount(BigDecimal bigDecimal);
 
     List<Shampoo> findAllWithIngredients(List<String> ingredientNames);
+
+    List<Shampoo> findAllWithIngredientsCountLessThen(int ingredientsCount);
 }

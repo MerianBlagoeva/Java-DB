@@ -66,6 +66,7 @@ public class Runner implements CommandLineRunner {
                 result.forEach(System.out::println);
                 break;
             case 8:
+                shampooService.findAllWithIngredientsCountLessThen(2);
                 break;
             case 9:
                 ingredientsService.deleteByName("Apple");

@@ -3,6 +3,7 @@ package bg.softuni.springrepositories.services;
 import bg.softuni.springrepositories.entities.Shampoo;
 import bg.softuni.springrepositories.entities.Size;
 import bg.softuni.springrepositories.repositories.ShampooRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -50,5 +51,15 @@ public class ShampooServiceImpl implements ShampooService {
     @Override
     public List<Shampoo> findAllWithIngredients(List<String> ingredientNames) {
         return shampooRepository.findByIngredientsNameIn(ingredientNames);
+    }
+
+    @Override
+    @Transactional
+    public List<Shampoo> findAllWithIngredientsCountLessThen(int ingredientsCount) {
+        List<Shampoo> byIngredientsLessThan = shampooRepository.findByCountOfIngredientsLessThan(ingredientsCount);
+
+        byIngredientsLessThan.forEach(shampoo -> System.out.println(shampoo.getBrand()));
+
+        return byIngredientsLessThan;
     }
 }
