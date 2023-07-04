@@ -45,8 +45,7 @@ public class Shampoo extends BaseEntity {
         this.size = size;
     }
 
-    @ManyToOne(optional = true, cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "label", referencedColumnName = "id")
     public Label getLabel() {
         return this.label;
@@ -56,7 +55,7 @@ public class Shampoo extends BaseEntity {
         this.label = label;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "shampoos_ingredients",
             joinColumns = @JoinColumn(name = "shampoo_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "ingredient_id", referencedColumnName = "id"))

@@ -79,7 +79,7 @@ public class Employee {
         this.department = department;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName = "employee_id")
     public Employee getManager() {
         return manager;
@@ -117,7 +117,7 @@ public class Employee {
         this.address = address;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "employees_projects",
             joinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"),
             inverseJoinColumns = @JoinColumn(name = "project_id", referencedColumnName = "project_id"))

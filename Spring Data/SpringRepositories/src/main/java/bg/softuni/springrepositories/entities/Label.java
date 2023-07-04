@@ -39,4 +39,12 @@ public class Label extends BaseEntity {
     public void setShampoos(Set<Shampoo> shampoos) {
         this.shampoos = shampoos;
     }
+
+    @Override
+    public String toString() {
+        return "Label{" +
+                "id=" + getId() +
+                ", title='" + title + '\'' +
+                ", subtitle='" + subtitle + "}";
+    }
 }

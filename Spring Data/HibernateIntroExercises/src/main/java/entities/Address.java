@@ -31,7 +31,7 @@ public class Address {
         this.text = text;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "town_id",referencedColumnName = "town_id")
     public Town getTown() {
         return town;
@@ -41,7 +41,7 @@ public class Address {
         this.town = town;
     }
 
-    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<Employee> getEmployees() {
         return employees;
     }
