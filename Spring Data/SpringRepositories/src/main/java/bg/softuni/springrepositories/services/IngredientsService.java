@@ -12,7 +12,7 @@ public interface IngredientsService {
 
     void increasePrice(BigDecimal percentage);
 
-    void deleteByName(String apple);
+    void deleteByName(String name);
 
     void updatePriceByName(String name, BigDecimal percentage);
 }

@@ -69,7 +69,7 @@ public class Runner implements CommandLineRunner {
                 shampooService.findAllWithIngredientsCountLessThen(2);
                 break;
             case 9:
-                ingredientsService.deleteByName("Apple");
+                ingredientsService.deleteByName("Apple"); //Doesn't work
                 break;
             case 10:
                 ingredientsService.increasePrice(BigDecimal.valueOf(1.1));
