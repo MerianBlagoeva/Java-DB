@@ -10,6 +10,7 @@ public class UserRegisterDto {
     private String password;
     private String confirmPassword;
     private String fullName;
+    private boolean isAdmin;
 
     public UserRegisterDto() {
     }
@@ -19,9 +20,10 @@ public class UserRegisterDto {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.fullName = fullName;
+        this.isAdmin = false;
     }
 
-    @Email(message = "You entered an invalid email!")
+    @Email(message = "Incorrect email.")
     public String getEmail() {
         return email;
     }

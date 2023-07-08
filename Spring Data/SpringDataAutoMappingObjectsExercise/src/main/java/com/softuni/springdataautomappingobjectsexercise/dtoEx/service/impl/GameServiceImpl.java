@@ -9,6 +9,9 @@ import jakarta.validation.ConstraintViolation;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @Service
@@ -36,7 +39,46 @@ public class GameServiceImpl implements GameService {
         }
 
         Game game = modelMapper.map(gameAddDto, Game.class);
+        game.setReleaseDate(LocalDate.parse(gameAddDto.getReleaseDate(), DateTimeFormatter.ofPattern("dd-MM-yyyy")));
 
-        //TODO: save in DB
+
+        gameRepository.save(game);
+        System.out.println("Added " + gameAddDto.getTitle());
     }
+
+
+
+    @Override
+    public void printAllGamesInfo() {
+
+        if (gameRepository.count() == 0) {
+            System.out.println("There are no games added yet");
+            return;
+        }
+
+        gameRepository.findAll()
+                .stream()
+                .map(game -> String.format("%s %.2f", game.getTitle(), game.getPrice()))
+                .forEach(System.out::println);
+    }
+
+    @Override
+    public void printGameInfo(String gameTitle) {
+        Game game = gameRepository.findByTitle(gameTitle);
+
+        if (game == null) {
+            System.out.println("There is no game with such title");
+            return;
+        }
+
+        String sb = "Title: " + gameTitle + System.lineSeparator() +
+                String.format("Price: %.2f", game.getPrice()) +
+                System.lineSeparator() +
+                "Description: " + game.getDescription() + System.lineSeparator() +
+                "Release date: " + game.getReleaseDate();
+
+        System.out.println(sb);
+    }
+
+
 }

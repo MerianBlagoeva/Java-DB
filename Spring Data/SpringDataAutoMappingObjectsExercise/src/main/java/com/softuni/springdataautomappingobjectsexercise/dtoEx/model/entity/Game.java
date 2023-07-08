@@ -14,6 +14,7 @@ public class Game extends BaseEntity {
     private String title;
     private String trailer;
     private String imageThumbnail;
+    private Double size;
     private BigDecimal price;
     private String description;
     private LocalDate releaseDate;
@@ -42,6 +43,15 @@ public class Game extends BaseEntity {
     @Column(name = "image_thumbnail")
     public String getImageThumbnail() {
         return imageThumbnail;
+    }
+
+    @Column
+    public Double getSize() {
+        return size;
+    }
+
+    public void setSize(Double size) {
+        this.size = size;
     }
 
     public void setImageThumbnail(String imageThumbnail) {

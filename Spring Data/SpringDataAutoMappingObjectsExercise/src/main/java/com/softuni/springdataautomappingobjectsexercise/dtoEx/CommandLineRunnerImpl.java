@@ -9,6 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 @Component
@@ -44,6 +47,15 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
                         commandParts[4], commandParts[5], commandParts[6],
                         commandParts[7]
                 ));
+
+                case "EditGame" -> userService
+                        .editGame(Long.parseLong(commandParts[1]), Arrays.copyOfRange(commandParts, 2, commandParts.length));
+
+                case "DeleteGame" -> userService.deleteGame(Long.parseLong(commandParts[1]));
+                case "AllGames" -> gameService.printAllGamesInfo();
+                case "DetailGame" -> gameService.printGameInfo(commandParts[1]);
+                case "OwnedGames" -> userService.printOwnedGames();
+
             }
         }
     }

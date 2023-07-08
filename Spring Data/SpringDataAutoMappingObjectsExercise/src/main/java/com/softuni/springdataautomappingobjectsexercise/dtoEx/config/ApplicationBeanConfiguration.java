@@ -2,9 +2,14 @@ package com.softuni.springdataautomappingobjectsexercise.dtoEx.config;
 
 import com.softuni.springdataautomappingobjectsexercise.dtoEx.model.dto.GameAddDto;
 import com.softuni.springdataautomappingobjectsexercise.dtoEx.model.entity.Game;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.spi.MappingContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Configuration
 public class ApplicationBeanConfiguration {
@@ -15,9 +20,22 @@ public class ApplicationBeanConfiguration {
 
         modelMapper
                 .typeMap(GameAddDto.class, Game.class)
-                .addMapping(GameAddDto)
+                .addMappings(mapper -> mapper
+                        .map(GameAddDto::getThumbnailURL,
+                                Game::setImageThumbnail));
+
+        Converter<String, LocalDate> localDateConverter = new Converter<String, LocalDate>() {
+            @Override
+            public LocalDate convert(MappingContext<String, LocalDate> mappingContext) {
+                return mappingContext.getSource() == null
+                        ? LocalDate.now()
+                        : LocalDate.parse(mappingContext.getSource(),
+                        DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+            }
+        };
 
 
+        modelMapper.addConverter(localDateConverter);
         return modelMapper;
     }
 }

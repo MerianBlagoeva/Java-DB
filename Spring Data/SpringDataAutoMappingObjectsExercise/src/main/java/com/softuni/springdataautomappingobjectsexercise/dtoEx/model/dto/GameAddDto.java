@@ -55,14 +55,13 @@ public class GameAddDto {
     }
 
 
-    @Size(min = 11, max = 11, message = "Trailer must be at least 11 characters")
+    @Size(min = 11, message = "Trailer must be at least 11 characters")
     public String getTrailer() {
-//        if (trailer.length() >= 11) {
-//            return trailer.substring(trailer.length() - 11);
-//        }
-        return trailer;
+        if (trailer.length() >= 11) {
+            return trailer.substring(trailer.length() - 11);
+        }
 
-//        return null;
+        return trailer;
     }
 
     public void setTrailer(String trailer) {

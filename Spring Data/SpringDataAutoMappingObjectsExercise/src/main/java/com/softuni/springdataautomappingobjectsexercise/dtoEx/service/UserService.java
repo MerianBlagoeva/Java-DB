@@ -9,4 +9,10 @@ public interface UserService {
     void loginUser(UserLoginDto userLoginDto);
 
     void logout();
+
+    void deleteGame(long gameId);
+
+    void editGame(Long gameId, String[] editInfo);
+
+    void printOwnedGames();
 }

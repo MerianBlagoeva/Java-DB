@@ -16,7 +16,7 @@ public class UserLoginDto {
         this.password = password;
     }
 
-    @Email(message = "You entered an invalid email")
+    @Email(message = "Incorrect email / password.")
     public String getEmail() {
         return email;
     }
@@ -26,7 +26,7 @@ public class UserLoginDto {
     }
 
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$",
-            message = "Password length must be at least 6 symbols and must contain at least 1 uppercase, 1 lowercase letter and 1 digit.")
+            message = "Incorrect email / password")
     public String getPassword() {
         return password;
     }
