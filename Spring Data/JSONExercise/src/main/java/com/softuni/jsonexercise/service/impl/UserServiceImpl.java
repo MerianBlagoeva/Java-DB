@@ -1,8 +1,8 @@
 package com.softuni.jsonexercise.service.impl;
 
 import com.google.gson.Gson;
-import com.softuni.jsonexercise.model.dto.UserSeedDto;
-import com.softuni.jsonexercise.model.dto.UserSoldDto;
+import com.softuni.jsonexercise.model.dto.*;
+import com.softuni.jsonexercise.model.entity.Product;
 import com.softuni.jsonexercise.model.entity.User;
 import com.softuni.jsonexercise.repository.UserRepository;
 import com.softuni.jsonexercise.service.UserService;
@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
@@ -64,5 +66,49 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(user -> modelMapper.map(user, UserSoldDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserWithSoldProductWrapperDto findAllUsersWithSoldProductOrderByProductsSoldDesc() {
+        List<User> users = userRepository.
+                findAllUsersWithAtLeastOneSoldProductOrderBySoldProductsDescThenByLastNameAsc();
+
+
+        List<UserWithSoldProductsDto> userWithSoldProductsDtos = new ArrayList<>();
+
+        UserWithSoldProductWrapperDto userWithSoldProductWrapperDto = new UserWithSoldProductWrapperDto();
+
+        for (User user : users) {
+            Set<Product> soldProducts = user.getSoldProducts();
+
+            List<ProductInfoDto> products = new ArrayList<>();
+
+            for (Product product : soldProducts) {
+                ProductInfoDto productInfoDto = modelMapper.map(product, ProductInfoDto.class);
+                products.add(productInfoDto);
+            }
+
+
+            SoldProductsDto soldProductsDto = new SoldProductsDto();
+
+            soldProductsDto.setProducts(products);
+            soldProductsDto.setCount(products.size());
+
+
+            UserWithSoldProductsDto userWithSoldProductsDto = modelMapper.map(user, UserWithSoldProductsDto.class);
+            userWithSoldProductsDto.setSoldProducts(soldProductsDto);
+
+
+            userWithSoldProductsDtos.add(userWithSoldProductsDto);
+        }
+
+
+        userWithSoldProductWrapperDto.setUsersCount(users.size());
+
+        userWithSoldProductWrapperDto.setUsers(userWithSoldProductsDtos);
+
+        return userWithSoldProductWrapperDto;
+
+
     }
 }

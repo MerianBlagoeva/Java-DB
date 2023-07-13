@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.softuni.jsonexercise.model.dto.CategoryInfoDto;
 import com.softuni.jsonexercise.model.dto.ProductNameAndPriceDto;
 import com.softuni.jsonexercise.model.dto.UserSoldDto;
+import com.softuni.jsonexercise.model.dto.UserWithSoldProductWrapperDto;
 import com.softuni.jsonexercise.model.entity.User;
 import com.softuni.jsonexercise.service.CategoryService;
 import com.softuni.jsonexercise.service.ProductService;
@@ -25,6 +26,9 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private static final String OUTPUT_PATH = "src/main/resources/files/out/";
     private static final String PRODUCTS_IN_RANGE_FILE_NAME = "products-in-range.json";
     private static final String USERS_AND_SOLD_PRODUCTS = "users-and-sold-products";
+
+    private static final String CATEGORIES_INFO = "categories-info";
+    private static final String USERS_AND_PRODUCTS = "users-and-product";
     private final CategoryService categoryService;
     private final UserService userService;
     private final ProductService productService;
@@ -50,12 +54,26 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
             case 1 -> productsInRange();
             case 2 -> soldProducts();
             case 3 -> categoriesByProductsCount();
+            case 4 -> usersAndProducts();
         }
     }
 
-    private void categoriesByProductsCount() {
+    private void usersAndProducts() throws IOException {
+        UserWithSoldProductWrapperDto userWithSoldProductWrapperDto =
+                userService.findAllUsersWithSoldProductOrderByProductsSoldDesc();
+
+        String content = gson.toJson(userWithSoldProductWrapperDto);
+
+        writeToFile(OUTPUT_PATH + USERS_AND_PRODUCTS, content);
+    }
+
+    private void categoriesByProductsCount() throws IOException {
         List<CategoryInfoDto> categoryInfoDtos = categoryService
                 .findAllCategoriesInfo();
+
+        String content = gson.toJson(categoryInfoDtos);
+
+        writeToFile(OUTPUT_PATH + CATEGORIES_INFO, content);
     }
 
     private void soldProducts() throws IOException {

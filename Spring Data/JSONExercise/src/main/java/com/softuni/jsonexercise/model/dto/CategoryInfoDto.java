@@ -6,23 +6,23 @@ import java.math.BigDecimal;
 
 public class CategoryInfoDto {
     @Expose
-    private String name;
+    private String category;
     @Expose
     private int productsCount;
     @Expose
-    private BigDecimal averagePrice;
+    private Double averagePrice;
     @Expose
     private BigDecimal totalRevenue;
 
     public CategoryInfoDto() {
     }
 
-    public String getName() {
-        return name;
+    public String getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public int getProductsCount() {
@@ -33,11 +33,11 @@ public class CategoryInfoDto {
         this.productsCount = productsCount;
     }
 
-    public BigDecimal getAveragePrice() {
+    public Double getAveragePrice() {
         return averagePrice;
     }
 
-    public void setAveragePrice(BigDecimal averagePrice) {
+    public void setAveragePrice(Double averagePrice) {
         this.averagePrice = averagePrice;
     }
 

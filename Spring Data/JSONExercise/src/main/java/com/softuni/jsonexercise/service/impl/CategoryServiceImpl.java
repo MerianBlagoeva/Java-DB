@@ -6,6 +6,7 @@ import com.softuni.jsonexercise.model.dto.CategoryInfoDto;
 import com.softuni.jsonexercise.model.dto.CategorySeedDto;
 import com.softuni.jsonexercise.model.dto.ProductNameAndPriceDto;
 import com.softuni.jsonexercise.model.entity.Category;
+import com.softuni.jsonexercise.model.entity.Product;
 import com.softuni.jsonexercise.repository.CategoryRepository;
 import com.softuni.jsonexercise.service.CategoryService;
 import com.softuni.jsonexercise.util.ValidationUtil;
@@ -13,6 +14,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -84,7 +86,20 @@ public class CategoryServiceImpl implements CategoryService {
                     CategoryInfoDto categoryInfoDto = modelMapper
                             .map(category, CategoryInfoDto.class);
 
-                    categoryInfoDto.setProductsCount(2);
+                    categoryInfoDto.setProductsCount(category.getProducts().size());
+
+                    categoryInfoDto
+                            .setAveragePrice(category.getProducts()
+                            .stream()
+                            .mapToDouble(p -> p.getPrice().doubleValue())
+                            .average().orElse(0.00));
+
+                    categoryInfoDto
+                            .setTotalRevenue(BigDecimal.valueOf(category.getProducts()
+                                    .stream()
+                                    .mapToDouble(e -> e.getPrice().doubleValue())
+                                    .sum()));
+
 
                     return categoryInfoDto;
 
