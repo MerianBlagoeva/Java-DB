@@ -69,6 +69,7 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     }
 
     private void carsWithTheirListOfParts() throws IOException {
+
         List<CarAndPartsDto> carAndPartDtos = carService
                 .findAllCarsWithTheirListOfParts();
 

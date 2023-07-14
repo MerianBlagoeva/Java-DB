@@ -2,6 +2,7 @@ package com.softuni.cardealer.model.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 import java.util.Set;
@@ -13,6 +14,8 @@ public class Car extends BaseEntity {
     private String model;
     private BigInteger travelledDistance;
     private Set<Part> parts;
+
+    private BigDecimal price;
 
     public Car() {
     }
@@ -64,5 +67,13 @@ public class Car extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(make, model, travelledDistance, parts);
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }

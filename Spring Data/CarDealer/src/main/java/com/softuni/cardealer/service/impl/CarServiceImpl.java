@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -53,6 +54,11 @@ public class CarServiceImpl implements CarService {
                 .map(carSeedDto -> {
                     Car car = modelMapper.map(carSeedDto, Car.class);
                     car.setParts(partService.findRandomParts());
+
+                    car.setPrice(BigDecimal.ZERO); // Initialize price to zero
+
+                    car.getParts().forEach(part -> car.setPrice(car.getPrice().add(part.getPrice())));
+
 
                     return car;
                 })

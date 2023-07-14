@@ -48,6 +48,7 @@ public class ApplicationBeanConfiguration {
     public Gson gson() {
         return new GsonBuilder()
                 .setPrettyPrinting()
+                .serializeNulls()
                 .create();
     }
 }

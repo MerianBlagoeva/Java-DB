@@ -85,30 +85,8 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerWithBoughtCarsDto> findAllCustomersWithAtLeast1BoughtCarOrderByTotalMoneySpendDescThenByCarsBoughtDesc() {
 
+
         return customerRepository.
-                findAllWithAtLeastOneBoughtCarOrderByTotalMoneySpendDescThenByBoughtCarsDesc()
-                .stream()
-                .map(customer -> {
-                    CustomerWithBoughtCarsDto customerWithBoughtCarsDto = modelMapper.map(customer, CustomerWithBoughtCarsDto.class);
-                    customerWithBoughtCarsDto.setBoughtCars((long) customer.getSales().size());
-
-
-                    double sum = -1.00;
-
-                    for (Sale sale : customer
-                            .getSales()) {
-                         sum = sale.getCar()
-                                .getParts()
-                                .stream()
-                                .mapToDouble(p -> p.getPrice().doubleValue())
-                                .sum();
-                    }
-
-                    customerWithBoughtCarsDto.setSpentMoney(BigDecimal.valueOf(sum));
-
-                    return customerWithBoughtCarsDto;
-
-                })
-                .collect(Collectors.toList());
+                findAllWithAtLeastOneBoughtCarOrderByTotalMoneySpendDescThenByBoughtCarsDesc();
     }
 }

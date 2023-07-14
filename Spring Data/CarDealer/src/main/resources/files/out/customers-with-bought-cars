@@ -1,42 +1,47 @@
 [
   {
-    "fullName": "Cinthia Lasala",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Rico Peer",
+    "boughtCars": 1,
+    "spentMoney": 3402.97
   },
   {
-    "fullName": "Hipolito Lamoreaux",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Rema Revelle",
+    "boughtCars": 1,
+    "spentMoney": 1822.46
   },
   {
-    "fullName": "Natalie Poli",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Sylvie Mcelravy",
+    "boughtCars": 1,
+    "spentMoney": 1577.32
   },
   {
-    "fullName": "Kristian Engberg",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Emmitt Benally",
+    "boughtCars": 1,
+    "spentMoney": 870.26
   },
   {
-    "fullName": "Carole Witman",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Johnette Derryberry",
+    "boughtCars": 2,
+    "spentMoney": 820.72
   },
   {
     "fullName": "Teddy Hobby",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "boughtCars": 1,
+    "spentMoney": 742.97
   },
   {
-    "fullName": "Rico Peer",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Cinthia Lasala",
+    "boughtCars": 1,
+    "spentMoney": 343.40
   },
   {
-    "fullName": "Garret Capron",
-    "boughtCars": 0,
-    "spentMoney": -1.0
+    "fullName": "Natalie Poli",
+    "boughtCars": 1,
+    "spentMoney": 305.32
+  },
+  {
+    "fullName": "Hai Everton",
+    "boughtCars": 1,
+    "spentMoney": 241.97
   }
 ]

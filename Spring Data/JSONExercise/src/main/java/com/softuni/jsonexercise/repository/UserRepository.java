@@ -12,7 +12,8 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u " +
-            "WHERE (SELECT COUNT (p) FROM Product p WHERE p.seller.id = u.id) >= 1 " +
+            "JOIN u.soldProducts p " +
+            "WHERE p.buyer IS NOT NULL " +
             "ORDER BY u.lastName, u.firstName")
     List<User> findAllUsersWithAtLeastOneSoldProductOrderByLastNameThenByFirstName();
 

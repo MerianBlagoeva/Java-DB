@@ -29,6 +29,7 @@ public class ApplicationBeanConfiguration {
         return new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .setPrettyPrinting()
+                .serializeNulls()
                 .create();
     }
 }
