@@ -1,16 +1,16 @@
 package com.softuni.cardealer.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "suppliers")
 public class Supplier extends BaseEntity {
     private String name;
     private Boolean isImporter;
+    private Set<Part> parts;
 
     public Supplier() {
     }
@@ -25,12 +25,12 @@ public class Supplier extends BaseEntity {
     }
 
     @Column(name = "is_importer")
-    public Boolean getImporter() {
+    public Boolean getIsImporter() {
         return isImporter;
     }
 
-    public void setImporter(Boolean importer) {
-        isImporter = importer;
+    public void setIsImporter(Boolean isImporter) {
+        this.isImporter = isImporter;
     }
 
     @Override
@@ -44,5 +44,14 @@ public class Supplier extends BaseEntity {
     @Override
     public int hashCode() {
         return Objects.hash(name, isImporter);
+    }
+
+    @OneToMany(mappedBy = "supplier", fetch = FetchType.EAGER)
+    public Set<Part> getParts() {
+        return parts;
+    }
+
+    public void setParts(Set<Part> parts) {
+        this.parts = parts;
     }
 }

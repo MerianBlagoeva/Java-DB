@@ -1,6 +1,7 @@
 package com.softuni.cardealer.service.impl;
 
 import com.google.gson.Gson;
+import com.softuni.cardealer.model.dto.SupplierIdNameAndPartsCountDto;
 import com.softuni.cardealer.model.dto.SupplierSeedDto;
 import com.softuni.cardealer.model.entity.Supplier;
 import com.softuni.cardealer.repository.SupplierRepository;
@@ -12,7 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import static com.softuni.cardealer.constants.GlobalConstants.RESOURCES_FILE_PATH;
 
@@ -20,8 +23,8 @@ import static com.softuni.cardealer.constants.GlobalConstants.RESOURCES_FILE_PAT
 public class SupplierServiceImpl implements SupplierService {
     private final SupplierRepository supplierRepository;
     private final ModelMapper modelMapper;
-    private static final String SUPPLIERS_FILE_NAME = "suppliers.json";
     private final Gson gson;
+    private static final String SUPPLIERS_FILE_NAME = "suppliers.json";
 
     public SupplierServiceImpl(SupplierRepository supplierRepository, ModelMapper modelMapper, Gson gson) {
         this.supplierRepository = supplierRepository;
@@ -57,5 +60,19 @@ public class SupplierServiceImpl implements SupplierService {
 
         return supplierRepository.findById(randomId)
                 .orElse(null);
+    }
+
+    @Override
+    public List<SupplierIdNameAndPartsCountDto> findAllSuppliersWhereIsImporterIsFalse(Boolean isImporter) {
+        return supplierRepository
+                .findAllByIsImporter(isImporter)
+                .stream()
+                .map(supplier -> {
+                    SupplierIdNameAndPartsCountDto supplierDto = modelMapper.map(supplier, SupplierIdNameAndPartsCountDto.class);
+                    supplierDto.setPartsCount(supplier.getParts().size());
+
+                    return supplierDto;
+                })
+                .collect(Collectors.toList());
     }
 }

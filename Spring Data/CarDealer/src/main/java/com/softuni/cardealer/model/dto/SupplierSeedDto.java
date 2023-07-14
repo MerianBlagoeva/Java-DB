@@ -17,11 +17,11 @@ public class SupplierSeedDto {
         this.name = name;
     }
 
-    public Boolean getImporter() {
+    public Boolean getIsImporter() {
         return isImporter;
     }
 
-    public void setImporter(Boolean importer) {
-        isImporter = importer;
+    public void setIsImporter(Boolean isImporter) {
+        this.isImporter = isImporter;
     }
 }

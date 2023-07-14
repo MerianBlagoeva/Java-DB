@@ -1,10 +1,9 @@
 package com.softuni.cardealer.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.math.BigInteger;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -12,7 +11,7 @@ import java.util.Set;
 public class Car extends BaseEntity {
     private String make;
     private String model;
-    private Double travelledDistance;
+    private BigInteger travelledDistance;
     private Set<Part> parts;
 
     public Car() {
@@ -37,20 +36,33 @@ public class Car extends BaseEntity {
     }
 
     @Column(name = "travelled_distance")
-    public Double getTravelledDistance() {
+    public BigInteger getTravelledDistance() {
         return travelledDistance;
     }
 
-    public void setTravelledDistance(Double travelledDistance) {
+    public void setTravelledDistance(BigInteger travelledDistance) {
         this.travelledDistance = travelledDistance;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Part> getParts() {
         return parts;
     }
 
     public void setParts(Set<Part> parts) {
         this.parts = parts;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(make, car.make) && Objects.equals(model, car.model) && Objects.equals(travelledDistance, car.travelledDistance) && Objects.equals(parts, car.parts);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(make, model, travelledDistance, parts);
     }
 }

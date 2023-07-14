@@ -2,35 +2,35 @@ package com.softuni.cardealer.model.dto;
 
 import java.math.BigInteger;
 
-public class CarSeedDto {
-    private String make;
-    private String model;
-    private BigInteger travelledDistance;
+public class CarInformationDto {
+    private String Make;
+    private String Model;
+    private BigInteger TravelledDistance;
 
-    public CarSeedDto() {
+    public CarInformationDto() {
     }
 
     public String getMake() {
-        return make;
+        return Make;
     }
 
     public void setMake(String make) {
-        this.make = make;
+        Make = make;
     }
 
     public String getModel() {
-        return model;
+        return Model;
     }
 
     public void setModel(String model) {
-        this.model = model;
+        Model = model;
     }
 
     public BigInteger getTravelledDistance() {
-        return travelledDistance;
+        return TravelledDistance;
     }
 
     public void setTravelledDistance(BigInteger travelledDistance) {
-        this.travelledDistance = travelledDistance;
+        TravelledDistance = travelledDistance;
     }
 }

@@ -1,8 +1,9 @@
 package com.softuni.cardealer.service.impl;
 
 import com.google.gson.Gson;
-import com.softuni.cardealer.model.dto.CarSeedDto;
+import com.softuni.cardealer.model.dto.*;
 import com.softuni.cardealer.model.entity.Car;
+import com.softuni.cardealer.model.entity.Part;
 import com.softuni.cardealer.repository.CarRepository;
 import com.softuni.cardealer.service.CarService;
 import com.softuni.cardealer.service.PartService;
@@ -12,7 +13,11 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import static com.softuni.cardealer.constants.GlobalConstants.RESOURCES_FILE_PATH;
 
@@ -52,5 +57,53 @@ public class CarServiceImpl implements CarService {
                     return car;
                 })
                 .forEach(carRepository::save);
+    }
+
+    @Override
+    public Car findRandomCar() {
+        long randomId = ThreadLocalRandom
+                .current().nextLong(1, carRepository.count() + 1);
+
+        return carRepository.findById(randomId).orElse(null);
+    }
+
+    @Override
+    public List<CarFromToyotaDto> findAllCarsFromMakeToyotaOrderbyModelThenByTravelledDistanceAsc(String make) {
+        return carRepository
+                .findAllByMakeOrderByModelAscTravelledDistanceDesc(make)
+                .stream()
+                .map(car -> modelMapper.map(car, CarFromToyotaDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CarAndPartsDto> findAllCarsWithTheirListOfParts() {
+        List<Car> cars = carRepository.findAll();
+
+        List<CarAndPartsDto> carAndPartsDtos = new ArrayList<>();
+
+        for (Car car : cars) {
+
+            List<PartNameAndPriceDto> partNameAndPriceDtos = new ArrayList<>();
+
+            for (Part part : car.getParts()) {
+                PartNameAndPriceDto partNameAndPriceDto = modelMapper.map(part, PartNameAndPriceDto.class);
+                partNameAndPriceDtos.add(partNameAndPriceDto);
+            }
+
+            CarInformationDto carInformationDto = modelMapper.map(car, CarInformationDto.class);
+
+            CarAndPartsDto carAndPartsDto = new CarAndPartsDto();
+
+            carAndPartsDto.setCar(carInformationDto);
+
+            carAndPartsDtos.add(carAndPartsDto);
+
+            carAndPartsDto.setParts(partNameAndPriceDtos);
+
+        }
+
+        return carAndPartsDtos;
+
     }
 }
