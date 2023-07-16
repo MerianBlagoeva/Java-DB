@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addresses>
+    <wrap>
+        <inner population="22222">
+            <country>BG</country>
+            <city>Sofia</city>
+        </inner>
+    </wrap>
+    <mainAddress population="44444">
+        <country>Country</country>
+        <city>City</city>
+    </mainAddress>
+</addresses>
