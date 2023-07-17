@@ -57,7 +57,13 @@ public class CarServiceImpl implements CarService {
 
                     car.setPrice(BigDecimal.ZERO); // Initialize price to zero
 
-                    car.getParts().forEach(part -> car.setPrice(car.getPrice().add(part.getPrice())));
+                    BigDecimal totalPrice = BigDecimal.ZERO;
+                    for (Part part : car.getParts()) {
+                        totalPrice = totalPrice.add(part.getPrice());
+                    }
+
+                    car.setPrice(totalPrice);
+
 
 
                     return car;

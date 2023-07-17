@@ -24,7 +24,7 @@ public class Sale extends BaseEntity {
     public void setDiscount(Integer discount) {
         this.discount = discount;
     }
-    @OneToOne
+    @ManyToOne
     public Car getCar() {
         return car;
     }

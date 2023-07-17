@@ -36,9 +36,9 @@ public class SaleServiceImpl implements SaleService {
         }
 
 
-        SaleSeedDto[] saleSeedDtos = new SaleSeedDto[10];
+        SaleSeedDto[] saleSeedDtos = new SaleSeedDto[50];
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             saleSeedDtos[i] = new SaleSeedDto();
         }
 

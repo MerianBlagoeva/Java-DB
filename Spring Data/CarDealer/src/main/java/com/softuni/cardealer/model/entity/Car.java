@@ -14,7 +14,6 @@ public class Car extends BaseEntity {
     private String model;
     private BigInteger travelledDistance;
     private Set<Part> parts;
-
     private BigDecimal price;
 
     public Car() {
