@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "sales")
 public class Sale extends BaseEntity {
-    private Integer discount;
+    private Double discount;
 
     private Car car;
 
@@ -17,11 +17,11 @@ public class Sale extends BaseEntity {
     }
 
     @Column
-    public Integer getDiscount() {
+    public Double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Integer discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
     @ManyToOne

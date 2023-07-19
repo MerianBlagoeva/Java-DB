@@ -4,18 +4,18 @@ import com.softuni.cardealer.model.entity.Car;
 import com.softuni.cardealer.model.entity.Customer;
 
 public class SaleSeedDto {
-    private Integer discount;
+    private Double discount;
     private Car car;
     private Customer customer;
 
     public SaleSeedDto() {
     }
 
-    public Integer getDiscount() {
+    public Double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Integer discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
 

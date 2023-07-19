@@ -25,13 +25,12 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
     private final Scanner sc;
 
     private static final String OUTPUT_PATH = "src/main/resources/files/out/";
-
     private static final String ORDERED_CUSTOMERS_FILE_NAME = "ordered-customers.json";
     private static final String CARS_FROM_TOYOTA_FILE_NAME = "cars-from-toyota";
-
     private static final String SUPPLIERS_NOT_IMPORTERS_FILE_NAME = "suppliers-not-importers";
     private static final String CARS_WITH_THEIR_PARTS_FILE_NAME = "cars-with-their-parts";
     private static final String CUSTOMERS_WITH_BOUGHT_CARS_FILE_NAME = "customers-with-bought-cars";
+    private static final String SALES_WITH_DISCOUNT_FILE_NAME = "sales-with-discount.json";
 
     public CommandLineRunnerImpl(SupplierService supplierService, PartService partService, CarService carService, CustomerService customerService, SaleService saleService, Gson gson) {
         this.supplierService = supplierService;
@@ -56,7 +55,16 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
             case 3 -> localSuppliers();
             case 4 -> carsWithTheirListOfParts();
             case 5 -> totalSalesByCustomer();
+            case 6 -> salesWithAppliedDiscount();
         }
+    }
+
+    private void salesWithAppliedDiscount() throws IOException {
+        List<SaleInfoDto> saleInfoDtos = saleService.findAllSalesInfo();
+
+        String content = gson.toJson(saleInfoDtos);
+
+        writeToFile(OUTPUT_PATH + SALES_WITH_DISCOUNT_FILE_NAME, content);
     }
 
     private void totalSalesByCustomer() throws IOException {
