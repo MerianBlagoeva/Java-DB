@@ -9,7 +9,7 @@ public class Forecast {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
 
     @Enumerated(EnumType.STRING)
@@ -17,10 +17,10 @@ public class Forecast {
     private DayOfWeek dayOfWeek;
 
     @Column(name = "max_temperature", nullable = false)
-    private double maxTemperature;
+    private Double maxTemperature;
 
     @Column(name = "min_temperature", nullable = false)
-    private double minTemperature;
+    private Double minTemperature;
 
     @Column(nullable = false)
     private LocalTime sunrise;
@@ -34,11 +34,11 @@ public class Forecast {
     public Forecast() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,19 +50,19 @@ public class Forecast {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public double getMaxTemperature() {
+    public Double getMaxTemperature() {
         return maxTemperature;
     }
 
-    public void setMaxTemperature(double maxTemperature) {
+    public void setMaxTemperature(Double maxTemperature) {
         this.maxTemperature = maxTemperature;
     }
 
-    public double getMinTemperature() {
+    public Double getMinTemperature() {
         return minTemperature;
     }
 
-    public void setMinTemperature(double minTemperature) {
+    public void setMinTemperature(Double minTemperature) {
         this.minTemperature = minTemperature;
     }
 

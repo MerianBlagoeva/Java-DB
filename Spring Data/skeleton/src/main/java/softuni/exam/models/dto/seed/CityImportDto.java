@@ -17,7 +17,7 @@ public class CityImportDto implements Serializable {
     @Min(500)
     private int population;
 
-    private long country;
+    private Long country;
 
     public String getCityName() {
         return cityName;
@@ -43,11 +43,11 @@ public class CityImportDto implements Serializable {
         this.population = population;
     }
 
-    public long getCountry() {
+    public Long getCountry() {
         return country;
     }
 
-    public void setCountry(long country) {
+    public void setCountry(Long country) {
         this.country = country;
     }
 }

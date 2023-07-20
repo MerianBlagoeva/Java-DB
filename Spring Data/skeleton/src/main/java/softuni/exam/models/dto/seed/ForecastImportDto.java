@@ -2,13 +2,14 @@ package softuni.exam.models.dto.seed;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import softuni.exam.models.entity.DayOfWeek;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.time.LocalTime;
 
 @XmlRootElement(name = "forecast")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -18,36 +19,25 @@ public class ForecastImportDto {
     private DayOfWeek dayOfWeek;
 
     @XmlElement(name = "max_temperature")
-    @Min(-20)
-    @Max(60)
-    private double maxTemperature;
+    private Double maxTemperature;
 
     @XmlElement(name = "min_temperature")
-    @Min(-50)
-    @Max(40)
-    private double minTemperature;
+    private Double minTemperature;
 
     @XmlElement(name = "sunrise")
-    private LocalTime sunrise;
+    private String sunrise;
 
     @XmlElement(name = "sunset")
-    private LocalTime sunset;
+    private String sunset;
 
     @XmlElement(name = "city")
-    private long city;
+    private Long city;
 
     public ForecastImportDto() {
     }
 
-    public ForecastImportDto(DayOfWeek dayOfWeek, double maxTemperature, double minTemperature, LocalTime sunrise, LocalTime sunset, long city) {
-        this.dayOfWeek = dayOfWeek;
-        this.maxTemperature = maxTemperature;
-        this.minTemperature = minTemperature;
-        this.sunrise = sunrise;
-        this.sunset = sunset;
-        this.city = city;
-    }
 
+    @NotNull
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }
@@ -56,43 +46,51 @@ public class ForecastImportDto {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public double getMaxTemperature() {
+    @Min(-20)
+    @Max(60)
+    @NotNull
+    public Double getMaxTemperature() {
         return maxTemperature;
     }
 
-    public void setMaxTemperature(double maxTemperature) {
+    public void setMaxTemperature(Double maxTemperature) {
         this.maxTemperature = maxTemperature;
     }
 
-    public double getMinTemperature() {
+    @Min(-50)
+    @Max(40)
+    @NotNull
+    public Double getMinTemperature() {
         return minTemperature;
     }
 
-    public void setMinTemperature(double minTemperature) {
+    public void setMinTemperature(Double minTemperature) {
         this.minTemperature = minTemperature;
     }
 
-    public LocalTime getSunrise() {
+    @NotBlank
+    public String getSunrise() {
         return sunrise;
     }
 
-    public void setSunrise(LocalTime sunrise) {
+    public void setSunrise(String sunrise) {
         this.sunrise = sunrise;
     }
 
-    public LocalTime getSunset() {
+    @NotBlank
+    public String getSunset() {
         return sunset;
     }
 
-    public void setSunset(LocalTime sunset) {
+    public void setSunset(String sunset) {
         this.sunset = sunset;
     }
 
-    public long getCity() {
+    public Long getCity() {
         return city;
     }
 
-    public void setCity(long city) {
+    public void setCity(Long city) {
         this.city = city;
     }
 }
