@@ -8,7 +8,7 @@ public interface ForecastService {
 
     boolean areImported();
 
-    String readForecastsFromFile() throws IOException;
+    String readForecastsFromFile() throws IOException, JAXBException;
 	
 	String importForecasts() throws IOException, JAXBException;
 

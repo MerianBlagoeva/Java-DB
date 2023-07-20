@@ -1,10 +1,10 @@
-package softuni.exam.util;
+package softuni.exam.util.impl;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import org.springframework.stereotype.Component;
-
+import softuni.exam.util.ValidationUtil;
 
 
 import java.util.Set;

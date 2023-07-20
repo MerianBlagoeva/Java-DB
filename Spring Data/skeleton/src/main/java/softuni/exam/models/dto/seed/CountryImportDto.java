@@ -1,4 +1,4 @@
-package softuni.exam.models.dto;
+package softuni.exam.models.dto.seed;
 
 import jakarta.validation.constraints.Size;
 

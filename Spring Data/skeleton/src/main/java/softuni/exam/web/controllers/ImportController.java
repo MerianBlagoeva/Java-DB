@@ -53,7 +53,7 @@ public class ImportController extends BaseController {
 
 
     @GetMapping("/forecasts")
-    public ModelAndView importForecasts() throws IOException {
+    public ModelAndView importForecasts() throws IOException, JAXBException {
         String apartmentsXmlFileContent = this.forecastService.readForecastsFromFile();
         return super.view("xml/import-forecasts", "forecasts", apartmentsXmlFileContent);
     }
@@ -66,7 +66,7 @@ public class ImportController extends BaseController {
     }
 
     @GetMapping("/offers")
-    public ModelAndView importOffers() throws IOException {
+    public ModelAndView importOffers() throws IOException, JAXBException {
         String offersXmlFileContent = this.forecastService.readForecastsFromFile();
 
         return super.view("xml/import-offers", "offers", offersXmlFileContent);

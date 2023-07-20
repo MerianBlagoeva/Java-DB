@@ -19,7 +19,7 @@ public class City {
     @Column(nullable = false)
     private int population;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.PERSIST)
     private Country country;
 
     public City() {

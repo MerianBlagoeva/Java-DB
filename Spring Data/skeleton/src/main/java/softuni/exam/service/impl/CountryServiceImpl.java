@@ -3,7 +3,7 @@ package softuni.exam.service.impl;
 import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import softuni.exam.models.dto.CountryImportDto;
+import softuni.exam.models.dto.seed.CountryImportDto;
 import softuni.exam.models.entity.Country;
 import softuni.exam.repository.CountryRepository;
 import softuni.exam.service.CountryService;
@@ -18,7 +18,6 @@ import static softuni.exam.constants.GlobalConstants.RESOURCES_JSON_FILE_PATH;
 @Service
 public class CountryServiceImpl implements CountryService {
     private static final String COUNTRIES_FILE_NAME = "countries.json";
-
     private CountryRepository countryRepository;
     private final ValidationUtil validationUtil;
 
