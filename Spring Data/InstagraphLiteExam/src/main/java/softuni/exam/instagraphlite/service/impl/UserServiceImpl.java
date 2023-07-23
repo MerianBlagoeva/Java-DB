@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import softuni.exam.instagraphlite.models.dto.UserSeedDto;
-import softuni.exam.instagraphlite.models.entity.Post;
 import softuni.exam.instagraphlite.models.entity.User;
 import softuni.exam.instagraphlite.repository.UserRepository;
 import softuni.exam.instagraphlite.service.PictureService;
