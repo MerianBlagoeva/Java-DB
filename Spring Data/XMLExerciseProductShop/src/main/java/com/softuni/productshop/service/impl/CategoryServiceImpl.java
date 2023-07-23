@@ -36,7 +36,8 @@ public class CategoryServiceImpl implements CategoryService {
         categories
                 .stream()
                 .filter(validationUtil::isValid)
-                .map(categorySeedDto -> modelMapper.map(categorySeedDto, Category.class));
+                .map(categorySeedDto -> modelMapper.map(categorySeedDto, Category.class))
+                .forEach(categoryRepository::save);
     }
 
     @Override
