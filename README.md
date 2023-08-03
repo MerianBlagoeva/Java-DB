@@ -15,7 +15,8 @@
 - **Database Programmability and Transactions**
 - **Exercise: Functions and Procedures**
 #
-![pngwing com (5) (1)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/3c030e6a-49ea-44da-966e-bada55f95c0b)![pngwing com (6)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/12c01d3f-5fed-4abb-b34d-e944dffba5a7)
+![pngwing com (6)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/1b27cf37-9898-480b-9521-39deee590977)![pngwing com (5) (1)](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/a8e57d77-a783-4480-ae0e-38da67db9e7e)
+
 ## Spring Data
 
 - **DB Apps Introduction**
