@@ -32,4 +32,10 @@
 - **Q&A**
 - **Workshop - MVC Project**
 
+# Certificates:
+
+![certificateMySQLResized](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/27c201bc-8560-45ae-a74e-d09aa00dc41d)
+![certificateSpringData](https://github.com/MerianBlagoeva/Java-DB/assets/110605865/3b678eef-0aa0-4407-9577-d97148f26aa1)
+
+
 
